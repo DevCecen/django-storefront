@@ -1,0 +1,12 @@
+# Python Sanal Ortamı (En önemlisi)
+venv/
+
+# Django Veritabanı (Yerel kalsın)
+storefront/db.sqlite3
+
+# Python gereksizleri
+__pycache__/
+*.py[cod]
+
+# VS Code klasörü
+.vscode/
