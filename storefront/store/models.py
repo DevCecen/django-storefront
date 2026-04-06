@@ -13,8 +13,9 @@ class Collection(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=255)
+    slug = models.SlugField()
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    unit_price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.IntegerField()
     collection = models.ForeignKey(Collection, on_delete=models.PROTECT)
     promotions = models.ManyToManyField(Promotion)  
@@ -36,6 +37,12 @@ class Customer(models.Model):
     phone = models.CharField(max_length=255, blank=True)
     birth_date = models.DateField(null=True, blank=True)
     membership = models.CharField(max_length=255, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
+    
+    class Meta:
+        db_table = 'store_customers'
+        indexes = [
+            models.Index(fields=['first_name','last_name'])
+        ]
     
     
     
