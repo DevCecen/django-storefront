@@ -38,11 +38,7 @@ class Customer(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     membership = models.CharField(max_length=255, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
     
-    class Meta:
-        db_table = 'store_customers'
-        indexes = [
-            models.Index(fields=['first_name','last_name'])
-        ]
+    
     
     
     
